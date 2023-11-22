@@ -1,6 +1,8 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
 
 export default {
+  // @ts-ignore
+  foo: "bar",
   stories: ["../src/**/*.stories.@(ts|tsx)"],
   framework: "@storybook/react-webpack5",
   webpackFinal(config) {
