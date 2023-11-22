@@ -30,4 +30,4 @@ jobs:
           storybookBuildDir: packages/components/storybook-static
           storybookBaseDir: packages/components
           storybookConfigDir: packages/components/.storybook
-          onlyChanged: false
+          onlyChanged: true
