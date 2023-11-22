@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["**"]
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+      - name: Use Node.js from .tool-versions
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .tool-versions
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - run: pnpm --filter=components build-storybook
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          allowConsoleErrors: false
+          autoAcceptChanges: false
+          storybookBuildDir: packages/components/storybook-static
+          storybookBaseDir: packages/components
+          storybookConfigDir: packages/components/.storybook
+          onlyChanged: false
