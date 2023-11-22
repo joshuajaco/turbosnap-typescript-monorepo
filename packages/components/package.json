@@ -1,0 +1,19 @@
+{
+  "name": "@turbosnap-typescript-monorepo/components",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start-storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build --webpack-stats-json"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^9.1.3",
+    "storybook": "^7.5.3",
+    "@storybook/react": "^7.5.3",
+    "@storybook/react-webpack5": "^7.5.3"
+  }
+}
